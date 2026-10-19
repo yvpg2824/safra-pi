@@ -1,77 +1,81 @@
 <!DOCTYPE html>
-
 <html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
+    <title>SAFRA.PI | Pi Gaming</title>
 
-<title>SAFRA.PI | Pi Gaming</title>
+    <meta
+        name="description"
+        content="SAFRA.PI — uma experiência de jogo inspirada no ecossistema Pi."
+    >
 
-<meta
-    name="description"
-    content="SAFRA.PI — uma experiência de jogo inspirada no ecossistema Pi."
->
+    <link rel="stylesheet" href="style.css">
 
-<link rel="stylesheet" href="style.css">
-
-
-<script src="https://sdk.minepi.com/pi-sdk.js"></script>
+    <script src="https://sdk.minepi.com/pi-sdk.js"></script>
 </head>
 
 <body>
 
-
 <header class="topbar">
 
+    <div class="brand">
+        <img
+            src="Safra_pi_S_logo_1024x1024_transparente.png"
+            alt="Logo SAFRA.PI"
+            class="brand-logo"
+        >
+        <span>SAFRA.PI</span>
+    </div>
 
-<div class="brand">
-    <img
-        src="Safra_pi_S_logo_1024x1024_transparente.png"
-        alt="Logo SAFRA.PI"
-        class="brand-logo"
-    >
-    <span>SAFRA.PI</span>
-</div>
+    <div class="project-message">
+        <strong data-i18n="projectMessage">
+            Faça parte da nova experiência da Pi Network.
+        </strong>
 
-<div class="project-message">
-    <strong data-i18n="projectMessage">
-        Faça parte da nova experiência da Pi Network.
-    </strong>
-    <span data-i18n="projectSubmessage">
-        Um novo projeto está começando. Explore e acompanhe essa evolução.
-    </span>
-</div>
+        <span data-i18n="projectSubmessage">
+            Um novo projeto está começando. Explore e acompanhe essa evolução.
+        </span>
+    </div>
 
-<nav class="top-actions">
+    <nav class="top-actions">
 
-    <select id="language" aria-label="Idioma">
-        <option value="pt">🇧🇷 Português</option>
-        <option value="en">🇺🇸 English</option>
-        <option value="es">🇪🇸 Español</option>
-        <option value="de">🇩🇪 Deutsch</option>
-    </select>
+        <select id="language" aria-label="Idioma">
+            <option value="pt">🇧🇷 Português</option>
+            <option value="en">🇺🇸 English</option>
+            <option value="es">🇪🇸 Español</option>
+            <option value="de">🇩🇪 Deutsch</option>
+        </select>
 
-    <button id="depositButton" class="deposit-button" data-i18n="depositButton">
-        Depositar Pi
-    </button>
+        <button
+            id="depositButton"
+            class="deposit-button"
+            data-i18n="depositButton"
+        >
+            Depositar Pi
+        </button>
 
-<button id="piLoginButton" class="deposit-button" type="button">
-    Entrar com Pi
-</button>
-</nav>
+        <button
+            id="piLoginButton"
+            class="deposit-button"
+            type="button"
+        >
+            Entrar com Pi
+        </button>
 
+    </nav>
 
 </header>
-
-
 
 <main class="container">
 
     <div class="test-notice" data-i18n="testNotice">
-    ⚠ VERSÃO DE TESTE — O site está em desenvolvimento e pode sofrer alterações.
-</div>
-<section class="welcome">
+        ⚠ VERSÃO DE TESTE — O site está em desenvolvimento e pode sofrer alterações.
+    </div>
+
+    <section class="welcome">
 
         <span class="eyebrow" data-i18n="eyebrow">
             PI GAMING EXPERIENCE
@@ -84,7 +88,6 @@
         </p>
 
     </section>
-
 
     <section class="dashboard">
 
@@ -110,7 +113,6 @@
 
     </section>
 
-
     <section class="game-layout">
 
         <!-- GRÁFICO À ESQUERDA -->
@@ -130,13 +132,15 @@
                 <canvas id="leftChart"></canvas>
             </div>
 
-            <p class="chart-caption" id="leftChartCaption"
-               data-i18n="leftCaption">
+            <p
+                class="chart-caption"
+                id="leftChartCaption"
+                data-i18n="leftCaption"
+            >
                 Pronto para começar
             </p>
 
         </aside>
-
 
         <!-- JOGO CENTRAL -->
 
@@ -153,6 +157,7 @@
                 </div>
 
                 <div class="mine-selector">
+
                     <label for="mineCount" data-i18n="mines">
                         Minas
                     </label>
@@ -163,10 +168,10 @@
                         <option value="7">7</option>
                         <option value="10">10</option>
                     </select>
+
                 </div>
 
             </div>
-
 
             <div class="bet-controls">
 
@@ -194,7 +199,6 @@
 
             </div>
 
-
             <div class="game-info">
 
                 <span id="gameMessage" data-i18n="makeBet">
@@ -203,103 +207,27 @@
 
             </div>
 
-
             <div id="board" class="board"></div>
 
+            <!-- BOTÕES DO JOGO -->
 
             <div class="game-actions">
 
-                <button id="cashout" class="cashout-button" disabled>
+                <button
+                    id="cashout"
+                    class="cashout-button"
+                    disabled
+                >
                     💰 <span data-i18n="cashout">Resgatar prêmio</span>
                 </button>
 
-                <button id="newGameButton" class="secondary-button">
-                    ↻ <span data-i18n="newGame">Novo jogo</span>
-                </button>
-
-            </div>
-
-
-            <div class="potential-prize">
-
-                <span data-i18n="potentialPrize">
-                    Prêmio potencial
-                </span>
-
-                <strong id="potentialPrize">0.00 π</strong>
-
-            </div>
-
-        </section>
-
-
-        <!-- GRÁFICO À DIREITA -->
-
-        <aside class="chart-card chart-right" id="rightChartCard">
-
-            <div class="chart-heading">
-                <span data-i18n="performance">DESEMPENHO</span>
-                <span class="chart-status" id="rightStatus">● READY</span>
-            </div>
-
-            <div class="chart-value" id="rightChartValue">
-                1.00x
-            </div>
-
-            <div class="chart-area">
-                <canvas id="rightChart"></canvas>
-            </div>
-
-            <p class="chart-caption" id="rightChartCaption"
-               data-i18n="rightCaption">
-                Seu progresso aparecerá aqui.
-            </p>
-
-        </aside>
-
-    </section>
-
-
-    <footer class="footer">
-
-        <span>SAFRA.PI</span>
-
-        <p data-i18n="disclaimer">
-            Versão experimental. Saldo e resultados simulados.
-        </p>
-
-    </footer>
-
-</main>
-
-
-<!-- ANIMAÇÃO DE RESULTADO -->
-
-<div id="resultOverlay" class="result-overlay" hidden>
-
-    <div class="result-box" id="resultBox">
-
-        <div id="resultIcon" class="result-icon">🐷</div>
-
-        <h2 id="resultTitle">LOSS</h2>
-
-        <p id="resultDescription">
-            Você encontrou uma bomba.
-        </p>
-
-        <button id="resultClose" class="primary-button">
-            Continuar
-        </button>
-
-    </div>
-
-</div>
-
-
-<!-- MODAL DE DEPÓSITO -->
+                <button
+                    id="newGameButton"
+                    class="secondary-button"
+                >
+                    ↻ <span data<!-- MODAL DE DEPÓSITO -->
 
 <div id="depositModal" class="modal-overlay" hidden>
-
     <div class="modal-card">
 
         <button
@@ -340,11 +268,13 @@
         </p>
 
     </div>
-
 </div>
+
+<!-- SCRIPTS DO SAFRA.PI -->
 
 <script src="script.js"></script>
 <script src="./pi-auth.js"></script>
 <script src="ads.js"></script>
+
 </body>
 </html>
