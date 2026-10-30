@@ -175,7 +175,9 @@
             </p>
         </aside>
     </section>
-    <footer class="footer">
+    
+<section id="support-safra" aria-labelledby="support-heading" style="max-width:850px;margin:24px auto;padding:22px;border:1px solid #b8934c;border-radius:16px;background:linear-gradient(120deg,#101928,#242335);color:#f5ead3;font-family:system-ui,sans-serif;box-sizing:border-box"><p style="color:#d9bd7b;font-size:12px;letter-spacing:.12em;margin:0">CONTRIBUIÇÃO VOLUNTÁRIA</p><h2 id="support-heading" style="color:#ecd08a;margin:8px 0">Apoie o projeto SAFRA.PI</h2><p>Ajude no desenvolvimento do Campo de Moedas. Você pode enviar uma doação voluntária em Pi para a carteira pública abaixo. Doações não geram créditos, vantagens, reservas ou rendimentos e não são depósitos no jogo.</p><label for="safra-support-amount">Valor que deseja doar (Pi)</label><div style="display:flex;gap:8px;flex-wrap:wrap;margin:8px 0"><button type="button" class="support-preset" data-amount="1">1 Pi</button><button type="button" class="support-preset" data-amount="5">5 Pi</button><button type="button" class="support-preset" data-amount="10">10 Pi</button></div><input id="safra-support-amount" type="number" inputmode="decimal" min="0.0000001" step="any" value="1" style="box-sizing:border-box;display:block;max-width:100%;width:220px;background:#0d1522;color:white;border:1px solid #8d7856;border-radius:7px;padding:10px;margin-bottom:10px"><p style="font-size:12px;overflow-wrap:anywhere">Carteira pública Pi: <span id="safra-support-address">GAXPIQNQ4GZBRSDVLPCAKXUVSWD7YNVMTYHQDH5F2TWMEATP7D4QVHR7</span></p><button id="safra-support-copy" type="button" style="padding:12px;border-radius:9px;background:#d9b96e;color:#151921;font-weight:700;border:0;cursor:pointer">Copiar carteira Pi</button><p id="safra-support-feedback" role="status" aria-live="polite" style="font-size:13px;color:#f0d08b"></p><p style="font-size:12px;color:#bfcadd">Transfira manualmente pelo Pi Wallet após conferir o destinatário. Escolher o valor não inicia pagamento nem permite confirmar recebimentos pelo site.</p></section>
+<footer class="footer">
         <span>SAFRA.PI</span>
         <p data-i18n="disclaimer">
             Versão experimental. Saldo e resultados simulados.
@@ -232,5 +234,7 @@
 <script src="script.js"></script>
 <script src="./pi-auth.js"></script>
 <script src="ads.js"></script>
+
+<script>(()=>{'use strict';const address=document.getElementById('safra-support-address').textContent.trim(),amount=document.getElementById('safra-support-amount'),status=document.getElementById('safra-support-feedback');document.querySelectorAll('.support-preset').forEach(b=>b.addEventListener('click',()=>{amount.value=b.dataset.amount}));document.getElementById('safra-support-copy').addEventListener('click',async()=>{const v=Number(amount.value);if(!Number.isFinite(v)||v<=0){status.textContent='Informe um valor de Pi maior que zero.';return;}try{await navigator.clipboard.writeText(address);status.textContent='Carteira copiada. Digite manualmente '+v.toLocaleString('pt-BR')+' Pi no Pi Wallet.'}catch{status.textContent='Não foi possível copiar automaticamente. Selecione o endereço exibido acima.'}})})();</script>
 </body>
 </html>
